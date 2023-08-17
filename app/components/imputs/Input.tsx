@@ -25,6 +25,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <div>
       <label
+        htmlFor={id}
         className="
         block
         text-sm
@@ -32,7 +33,6 @@ const Input: React.FC<InputProps> = ({
         leading-6
         text-gray-900
       "
-        htmlFor={id}
       >
         {label}
       </label>

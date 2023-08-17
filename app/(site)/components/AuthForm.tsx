@@ -72,6 +72,7 @@ const AuthForm = () => {
     // NextAuth Social Login
     signIn(action, { redirect: false })
       .then((callback) => {
+        console.log(callback);
         if (callback?.error) {
           toast.error("Invalid Credentials");
         }
@@ -110,6 +111,7 @@ const AuthForm = () => {
               register={register}
               errors={errors}
               disabled={isLoading}
+              required
             />
           )}
           <Input
@@ -119,6 +121,7 @@ const AuthForm = () => {
             register={register}
             errors={errors}
             disabled={isLoading}
+            required
           />
           <Input
             id="password"
@@ -126,6 +129,8 @@ const AuthForm = () => {
             type="password"
             register={register}
             errors={errors}
+            disabled={isLoading}
+            required
           />
           <div>
             <Button disabled={isLoading} fullWidth type="submit">
