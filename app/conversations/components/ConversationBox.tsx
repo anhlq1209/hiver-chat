@@ -3,13 +3,12 @@
 import clsx from "clsx";
 import { format } from "date-fns";
 import { useCallback, useMemo } from "react";
-import { Conversation, Message, User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-import { FullConversationType } from "@/app/types";
-import useOtherUser from "@/app/hooks/useOtherUser";
 import Avatar from "@/app/components/Avatar";
+import useOtherUser from "@/app/hooks/useOtherUser";
+import { FullConversationType } from "@/app/types";
 
 interface ConversationBoxProps {
   data: FullConversationType;
@@ -25,8 +24,8 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
   const router = useRouter();
 
   const handleClick = useCallback(() => {
-    router.push(`/conversation/${data.id}`);
-  }, [data.id, router]);
+    router.push(`/conversations/${data.id}`);
+  }, [data, router]);
 
   const lastMessage = useMemo(() => {
     const messages = data.messages || [];
@@ -111,16 +110,17 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                   font-light
                 "
               >
-                {format(new Date(lastMessage.createdAt), 'p')}
+                {format(new Date(lastMessage.createdAt), "p")}
               </p>
             )}
           </div>
           <p
-            className={clsx(`
+            className={clsx(
+              `
               truncate
               text-sm
             `,
-              hasSeen ? 'text-gray-500' : 'text-black font-medium'
+              hasSeen ? "text-gray-500" : "text-black font-medium"
             )}
           >
             {lastMessageText}
