@@ -20,7 +20,6 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
   selected,
 }) => {
   const otherUser = useOtherUser(data);
-  console.log(otherUser)
   const session = useSession();
   const router = useRouter();
 
