@@ -3,9 +3,9 @@
 import axios from "axios";
 import { CldUploadButton } from "next-cloudinary";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { HiPaperAirplane, HiPhoto } from "react-icons/hi2";
 
 import useConversation from "@/app/hooks/useConversation";
-import { HiPaperAirplane, HiPhoto } from "react-icons/hi2";
 import MessageInput from "./MessageInput";
 
 const Form = () => {
@@ -27,14 +27,14 @@ const Form = () => {
 
     axios.post("/api/messages", {
       ...data,
-      conversationId,
+      conversationId: conversationId,
     });
   };
 
   const handleUpload = (result: any) => {
     axios.post('/api/messages', {
       image: result?.info?.secure_url,
-      conversationId
+      conversationId: conversationId
     })
   }
 
